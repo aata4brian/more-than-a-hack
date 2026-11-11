@@ -47,7 +47,9 @@ def choose():
 
 
 def find_data(explicit, needs_tags):
-    fallback = Path(os.environ.get("MTAH_DATA_DIR", ROOT / "data"))
+    config_path = ROOT / ".mtah-local.json"
+    config = json.loads(config_path.read_text(encoding="utf-8-sig")) if config_path.is_file() else {}
+    fallback = Path(os.environ.get("MTAH_DATA_DIR") or config.get("data_dir") or ROOT / "data")
     required = ["BAR-ATH_tactical_atd.xml", "BAR-ATH_tactical_atd.txt"]
     if needs_tags:
         required.append("BAR-ATH_tactical_smart_tagging.xml")

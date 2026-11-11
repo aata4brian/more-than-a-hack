@@ -56,3 +56,7 @@ Video, tracking, homography, dan tagging Barcelona vs Athletic berasal dari pake
 ## Kandidat dan dokumen pengumpulan
 
 Nomor 7 mereproduksi kandidat saat ini. [Dokumen teknis tim](Hijrah%20ke%20Barcelona.md) menjelaskan data latih, aturan, hasil, dan keterbatasan. Dokumen versi 1 disimpan sebagai arsip di dokumen/. Repo kode mengikuti susunan panitia; CSV pengumpulan tetap di keluaran lokal. Lima belas pilihan merupakan konfigurasi percobaan yang sudah dapat dijalankan, termasuk baseline pembanding. Untuk mengulang pelatihan, lihat [panduan pelatihan](eksperimen/PELATIHAN.md).
+
+## Buka video dengan prediksi
+
+Buka **BUKA_VIEWER.bat** untuk memuat video tactical, CSV prediksi, referensi publik, dan indikator tracking bola secara lokal. Video dibaca langsung dari folder data masing-masing anggota. Pilih folder lewat --data-dir, MTAH_DATA_DIR, atau konfigurasi pribadi .mtah-local.json. [Petunjuk viewer](viewer/README.md) menjelaskan pemilihan CSV dan cara membuka data dari Drive untuk desktop.

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; media-src blob:; img-src data:; connect-src 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; media-src 'self' blob:; img-src data:; connect-src 'self'; form-action 'none'">
 <title>Hijrah ke Barcelona · Review pertandingan</title>
 <style>
 :root {
@@ -536,6 +536,49 @@ document.addEventListener("keydown", event => {
   }
 });
 render();
+
+async function openLocalBundle() {
+  if (!["127.0.0.1", "localhost"].includes(location.hostname) ||
+      new URLSearchParams(location.search).get("autoload") !== "1") return;
+  const fetchLocal = async route => {
+    const response = await fetch("./" + route, {cache: "no-store"});
+    if (!response.ok) throw Error("Berkas lokal gagal dibaca: " + route);
+    return response;
+  };
+  try {
+    const manifest = await (await fetchLocal("manifest.json")).json();
+    await Promise.all(["predictions.csv", "reference.csv"].map(async route => {
+      if (!manifest[route]) return;
+      const publicFile = route === "reference.csv";
+      const data = loadLabels(await (await fetchLocal(route)).text(), publicFile);
+      const key = publicFile ? "ref" : "pred";
+      state[key] = data.labels;
+      $(key + "Name").textContent = manifest[route];
+      if (publicFile) { state.coverage = data.ranges; renderCoverage(); }
+    }));
+    if (manifest.video) {
+      $("videoName").textContent = manifest.video;
+      state.videoUrl = new URL("./video", location.href).href;
+      state.sync = "Membuka video…";
+      $("placeholderTitle").textContent = "Membuka video dari folder lokal";
+      $("placeholderNote").textContent = "Drive untuk desktop mungkin perlu mengambil bagian file terlebih dahulu.";
+      video.src = state.videoUrl;
+      video.load();
+      trackVideo(state.videoUrl);
+    }
+    render();
+    if (manifest["tracking.txt"]) {
+      const response = await fetchLocal("tracking.txt");
+      state.atd = await loadAtd({stream: () => response.body});
+      $("atdName").textContent = manifest["tracking.txt"];
+      render();
+    }
+  } catch (error) {
+    warn("autoload", error.message + " Berkas juga dapat dipilih lewat tombol di atas.");
+  }
+}
+openLocalBundle();
+
 </script>
 </body>
 </html>
