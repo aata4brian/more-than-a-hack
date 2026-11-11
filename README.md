@@ -6,7 +6,7 @@ Ruang kerja tim untuk fase Ball Possession di More Than a Hack 2027. Setiap perc
 
 1. Instal **Python 3.12** dengan Python Launcher di Windows. Ambil paket data dari tautan resmi panitia yang diterima anggota terdaftar.
 2. Ekstrak paket dengan susunan `data/tactical/` dan `data/broadcast/`. Kalau data disimpan di folder lain, pilih folder induk `tactical/` ketika diminta.
-3. Buka **`eksperimen/JALANKAN.bat`**, lalu ketik nomor **1–15**. Saat pertama dibuka, launcher memasang dependensi yang dipatok versinya.
+3. Buka **`JALANKAN.bat`**, lalu ketik nomor **1–15**. Saat pertama dibuka, launcher memasang dependensi yang dipatok versinya.
 4. Ambil `Hijrah ke Barcelona.csv` dan `run.json` dari subfolder baru di `outputs/`. Terminal akan memberi tahu apakah CSV lolos validator panitia.
 
 Di terminal Windows, perintah yang sama bisa dijalankan dari root repo.
@@ -52,3 +52,7 @@ Keempat baseline panitia, dua versi tim terdahulu, kandidat utama, dan delapan v
 Panduan resmi [CHALLENGE](CHALLENGE.md), [DATA](DATA.md), [EVALUATION](EVALUATION.md), [SUBMISSION](SUBMISSION.md), dan [RULES](RULES.md) disalin dari [repo panitia](https://github.com/metrica-sports/more-than-a-hack-2027/tree/f8f2629ff1e0985f81d7e59d8413678514ee1530).
 
 Video, tracking, homography, dan tagging Barcelona vs Athletic berasal dari paket berlisensi panitia. Setiap anggota membuka berkas itu di komputernya sendiri. Hasil per frame untuk pengumpulan disimpan di `outputs/` dan diserahkan lewat formulir panitia. Lima menit label publik dipakai untuk pengecekan format, indeks, dan sinkronisasi. Pemilihan metode memakai pertandingan eksternal.
+
+## Kandidat dan dokumen pengumpulan
+
+Nomor 7 mereproduksi kandidat saat ini. [Dokumen teknis tim](Hijrah%20ke%20Barcelona.md) menjelaskan data latih, aturan, hasil, dan keterbatasan. Dokumen versi 1 disimpan sebagai arsip di dokumen/. Repo kode mengikuti susunan panitia; CSV pengumpulan tetap di keluaran lokal. Lima belas pilihan merupakan konfigurasi percobaan yang sudah dapat dijalankan, termasuk baseline pembanding. Untuk mengulang pelatihan, lihat [panduan pelatihan](eksperimen/PELATIHAN.md).

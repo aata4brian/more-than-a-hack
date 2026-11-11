@@ -1,0 +1,23 @@
+{
+  "method": "geometry_2_4_+0",
+  "family": "geometry",
+  "decoder": {
+    "team_switch": 2.0,
+    "dead_switch": 4.0,
+    "dead_bias": 0.0
+  },
+  "train_matches": [
+    "J03WMX",
+    "J03WN1",
+    "J03WOH"
+  ],
+  "holdout_matches": [
+    "J03WOY",
+    "J03WPY"
+  ],
+  "accepted": true,
+  "dev_gain_spellF1": 0.1732907278928384,
+  "holdout_gain_spellF1": 0.199810410301429,
+  "holdout_macroF1_delta": 0.3167228004081446,
+  "stress_gain_spellF1": 0.21066844618362213
+}

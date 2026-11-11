@@ -1,0 +1,541 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; media-src blob:; img-src data:; connect-src 'none'; form-action 'none'">
+<title>Hijrah ke Barcelona · Review pertandingan</title>
+<style>
+:root {
+  color-scheme: dark;
+  --page: #101217; --panel: #181c24; --edge: #343b49; --text: #f4f5f7;
+  --muted: #a6afbf; --accent: #f7cb76; --quiet: #262d39;
+  --H: #4d9cf5; --A: #f07587; --D: #f4be60; --X: #b2bacb;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--page); color: var(--text); font: 14px/1.45 system-ui, sans-serif; }
+main { max-width: 1560px; margin: auto; padding: 23px 24px 34px; }
+header, .heading, .controls, .facts, .legend, .topbar { display: flex; align-items: center; }
+header { justify-content: space-between; gap: 12px; margin-bottom: 17px; }
+.heading { gap: 14px; }
+.mark { display: grid; place-items: center; width: 43px; height: 43px; border: 1px solid #675636; border-radius: 10px; background: #332a1c; color: var(--accent); font-weight: 800; }
+h1, p { margin: 0; }
+h1 { font-size: clamp(19px, 3vw, 26px); line-height: 1.16; letter-spacing: -.035em; }
+.sub, .muted { color: var(--muted); }
+.sub { margin-top: 3px; font-size: 12px; }
+.pill, kbd { border: 1px solid var(--edge); border-radius: 5px; padding: 2px 7px; color: var(--muted); font: 11px/1.55 ui-monospace, monospace; }
+.pill { white-space: nowrap; letter-spacing: .06em; padding: 5px 8px; }
+.sources { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 8px; margin-bottom: 12px; }
+.file { min-width: 0; position: relative; display: flex; gap: 7px; align-items: center; padding: 8px 9px; background: var(--panel); border: 1px solid var(--edge); border-radius: 8px; cursor: pointer; }
+.file:hover { border-color: #727e92; }
+.file:focus-within, button:focus-visible, input:focus-visible, select:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.file input { position: absolute; inset: 0; width: 100%; opacity: 0; cursor: pointer; }
+.file .number { font: 11px ui-monospace, monospace; color: var(--accent); }
+.file div { overflow: hidden; }
+.file strong, .file small { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.file small { color: var(--muted); font-size: 11px; }
+.status { padding: 8px 10px; border: 1px solid #8d6148; background: #392820; border-radius: 7px; margin: 0 0 10px; color: #ffdbc1; }
+[hidden] { display: none !important; }
+.desk { border: 1px solid var(--edge); border-radius: 11px; background: var(--panel); padding: 9px; }
+.stage { display: grid; grid-template-columns: 123px minmax(0,1fr) 105px; gap: 8px; }
+.reference { grid-column: 1; grid-row: 1; display: flex; flex-direction: column; border: 1px solid var(--edge); border-radius: 8px; overflow: hidden; background: #1e2636; }
+.reference h2, .rail h2 { margin: 0; font-size: 10px; color: var(--muted); letter-spacing: .1em; text-transform: uppercase; }
+.reference h2 { padding: 10px; }
+.reference .label { flex: 1; min-height: 98px; display: grid; place-content: center; text-align: center; padding: 7px; }
+.reference .letter { font-size: 35px; line-height: 1; }
+.reference .labelname { max-width: 95px; }
+.reference .coverage { padding: 8px; font-size: 11px; color: var(--muted); }
+.screen { min-width: 0; grid-column: 2; grid-row: 1; }
+.topbar { justify-content: space-between; gap: 10px; min-height: 39px; padding: 4px 10px; border-radius: 8px 8px 0 0; background: #32291c; color: #ffdc9c; }
+.topbar > span:first-child { font-size: 10px; font-weight: 750; letter-spacing: .1em; }
+.label { --label-bg: transparent; --label-ink: inherit; background: var(--label-bg); color: var(--label-ink); }
+.label[data-label="H"], .tag[data-label="H"] { --label-bg: var(--H); --label-ink: #0c172c; }
+.label[data-label="A"], .tag[data-label="A"] { --label-bg: var(--A); --label-ink: #2d111a; }
+.label[data-label="D"], .tag[data-label="D"] { --label-bg: var(--D); --label-ink: #271c09; }
+.label[data-label="X"], .tag[data-label="X"] { --label-bg: var(--X); --label-ink: #202533; }
+.label[data-label="none"], .tag[data-label="none"] { --label-bg: #252c39; --label-ink: #c0c8d5; }
+.topbar[data-label="none"] { --label-bg: #392b1c; --label-ink: #f7d49c; }
+.readout { display: flex; align-items: center; gap: 7px; }
+.letter { font: 800 17px/1 ui-monospace, monospace; }
+.labelname { font-size: 12px; font-weight: 650; }
+.viewer { display: grid; place-items: center; position: relative; isolation: isolate; aspect-ratio: 16/9; max-height: max(250px, calc(100dvh - 325px)); background: #202833; overflow: hidden; }
+video { width: 100%; height: 100%; display: block; object-fit: contain; background: #0e1116; }
+.placeholder { position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; text-align: center; padding: 20px; background: radial-gradient(ellipse at 50% 35%, #303c4b, #1c2430); }
+.placeholder svg { width: min(36vw, 245px); height: auto; color: #78899b; margin-bottom: 12px; }
+.placeholder b { font-size: 17px; }
+.placeholder small { color: #acb8c8; margin-top: 3px; }
+.rail { grid-column: 3; grid-row: 1; display: grid; grid-template-rows: auto repeat(9, minmax(23px,1fr)); gap: 3px; min-width: 0; }
+.rail h2 { padding: 4px 2px; text-align: center; white-space: nowrap; }
+.tag { background: var(--label-bg, var(--quiet)); color: var(--label-ink, var(--muted)); text-align: left; display: flex; justify-content: space-between; align-items: center; gap: 3px; min-width: 0; padding: 1px 7px; border: 1px solid transparent; border-radius: 5px; font: 11px ui-monospace, monospace; }
+.tag strong { font-size: 13px; }
+.tag[aria-current="true"] { outline: 2px solid var(--accent); outline-offset: 1px; position: relative; z-index: 1; font-weight: 750; }
+.tag:disabled { opacity: .7; }
+.deck { padding: 8px 2px 0; }
+.facts { flex-wrap: wrap; gap: 5px 17px; padding: 3px 1px 8px; }
+.fact { color: var(--muted); font-size: 11px; }
+.fact b { margin-left: 4px; color: var(--text); font: 650 12px ui-monospace, monospace; }
+.fact b[data-track="missing"] { color: #ffc180; }
+.fact b[data-track="found"] { color: #a1e3be; }
+input[type=range] { width: 100%; margin: 0; accent-color: var(--accent); }
+.timeline { position: relative; margin-bottom: 6px; }
+.coverage-track { height: 4px; position: relative; background: var(--quiet); border-radius: 3px; overflow: hidden; margin: 0 6px; }
+.coverage-track span { position: absolute; top: 0; height: 100%; background: #819fff; min-width: 2px; }
+.controls { flex-wrap: wrap; gap: 6px; }
+.spacer { flex: 1; }
+button, select, input[type=number] { background: var(--quiet); border: 1px solid var(--edge); color: var(--text); border-radius: 6px; padding: 5px 8px; font: inherit; }
+button, select { cursor: pointer; }
+button:hover:not(:disabled) { filter: brightness(1.19); }
+button:disabled, input:disabled, select:disabled { opacity: .45; cursor: default; }
+.play { background: var(--accent); color: #252012; border-color: transparent; font-weight: 750; min-width: 80px; }
+input[type=number] { width: 92px; font-family: ui-monospace, monospace; }
+.legend { flex-wrap: wrap; gap: 6px 15px; margin-top: 10px; color: var(--muted); font-size: 12px; }
+.legend span { display: inline-flex; align-items: center; gap: 5px; }
+.legend b { width: 20px; height: 20px; display: grid; place-items: center; border-radius: 4px; font: 800 12px ui-monospace, monospace; }
+.help { margin-top: 9px; color: var(--muted); font-size: 11px; }
+.desk:fullscreen { display: flex; flex-direction: column; justify-content: center; align-items: stretch; overflow: auto; }
+.desk:fullscreen .viewer { max-height: calc(100vh - 180px); }
+@media (max-width: 850px) {
+  main { padding: 13px; } .sources { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .stage { grid-template-columns: 94px minmax(0,1fr) 76px; gap: 6px; }
+  .tag { padding: 1px 4px; font-size: 10px; }
+}
+@media (max-width: 600px) {
+  main { padding: 8px; } .pill { display: none; }
+  .stage { grid-template-columns: 1fr; }
+  .screen { grid-column: 1; grid-row: 1; }
+  .viewer { max-height: none; }
+  .reference { grid-column: 1; grid-row: 2; flex-direction: row; align-items: center; gap: 3px; }
+  .reference .label { min-height: 0; display: flex; align-items: center; justify-content: center; gap: 7px; }
+  .reference .letter { font-size: 17px; }
+  .reference .labelname { max-width: none; }
+  .rail { grid-column: 1; grid-row: 3; grid-template: auto 30px / repeat(9,minmax(0,1fr)); }
+  .rail h2 { grid-column: 1 / -1; }
+  .tag { display: grid; place-content: center; justify-items: center; gap: 0; font-size: 8px; }
+  .spacer { display: none; }
+}
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <div class="heading"><div class="mark" aria-hidden="true">HB</div>
+      <div><h1>Review pertandingan</h1><p class="sub">Hijrah ke Barcelona · Barcelona vs Athletic Club</p></div>
+    </div>
+    <span class="pill">TACTICAL / 25 FPS / LOKAL</span>
+  </header>
+  <section class="sources" aria-label="Berkas yang dibuka">
+    <label class="file"><span class="number">01</span><div><strong>Video tactical</strong><small id="videoName">Pilih MP4 lokal atau dari H:</small></div><input id="videoFile" type="file" accept="video/*,.mp4"></label>
+    <label class="file"><span class="number">02</span><div><strong>Prediksi tim</strong><small id="predName">Pilih CSV hasil program</small></div><input id="predFile" type="file" accept=".csv,text/csv"></label>
+    <label class="file"><span class="number">03</span><div><strong>Referensi publik</strong><small id="refName">Pilih CSV resmi 5 menit</small></div><input id="refFile" type="file" accept=".csv,text/csv"></label>
+    <label class="file"><span class="number">04</span><div><strong>Tracking bola · opsional</strong><small id="atdName">Pilih tactical ATD .txt</small></div><input id="atdFile" type="file" accept=".txt,text/plain"></label>
+  </section>
+  <p class="status" id="message" role="status" hidden></p>
+  <section class="desk" id="desk" aria-label="Player pertandingan">
+    <div class="stage">
+      <aside class="reference">
+        <h2>Asli · publik</h2>
+        <div class="label" id="reference" data-label="none"><strong class="letter">—</strong><span class="labelname">Belum dibuka</span></div>
+        <p class="coverage" id="coverage">Label resmi tersedia hanya di cuplikan publik.</p>
+      </aside>
+      <div class="screen">
+        <div class="topbar label" id="prediction" data-label="none">
+          <span>PREDIKSI TIM</span><span class="readout"><strong class="letter">—</strong><span class="labelname">Belum dibuka</span></span>
+        </div>
+        <div class="viewer">
+          <video id="video" playsinline preload="metadata" aria-label="Video tactical"></video>
+          <div class="placeholder" id="placeholder">
+            <svg viewBox="0 0 200 94" fill="none" aria-hidden="true"><g stroke="currentColor" stroke-width="1.25"><rect x="2" y="2" width="196" height="90" rx="4"/><path d="M100 2v90M2 24h32v46H2m196-46h-32v46h32M2 35h14v24H2m196-24h-14v24h14"/><circle cx="100" cy="47" r="16"/><circle cx="100" cy="47" r="1.5" fill="currentColor"/></g></svg>
+            <b id="placeholderTitle">Pilih video tactical</b><small id="placeholderNote">Frame 0 di video sejajar dengan frame 0 di CSV.</small>
+          </div>
+        </div>
+      </div>
+      <aside class="rail" id="rail" aria-label="Sembilan frame prediksi di sekitar frame aktif"><h2>Urutan frame</h2></aside>
+    </div>
+    <div class="deck">
+      <div class="facts">
+        <span class="fact">Waktu video <b id="time">—</b></span>
+        <span class="fact">Frame <b id="frame">—</b></span>
+        <span class="fact">ATD ID <b id="atdId">—</b></span>
+        <span class="fact">Bola (ATD) <b id="ball">Belum dibuka</b></span>
+        <span class="fact">Sinkronisasi <b id="sync">Menunggu video</b></span>
+      </div>
+      <div class="timeline">
+        <input id="slider" type="range" min="0" max="199318" step="1" value="0" aria-label="Posisi video per frame" disabled>
+        <div class="coverage-track" id="coverageTrack" title="Rentang label referensi publik" aria-hidden="true"></div>
+      </div>
+      <div class="controls">
+        <button id="play" class="play" disabled>▶ Putar</button>
+        <button id="backFive" title="Mundur lima detik" disabled>−5 dtk</button>
+        <button id="prev" title="Mundur satu frame" disabled>−1 frame</button>
+        <button id="next" title="Maju satu frame" disabled>+1 frame</button>
+        <button id="forwardFive" title="Maju lima detik" disabled>+5 dtk</button>
+        <select id="speed" aria-label="Kecepatan putar" disabled><option value=".25">0,25×</option><option value=".5">0,5×</option><option value="1" selected>1×</option><option value="1.5">1,5×</option><option value="2">2×</option></select>
+        <span class="spacer"></span>
+        <button id="publicStart" title="Lompat ke frame pertama yang punya referensi resmi" disabled>Cuplikan publik</button>
+        <button id="nextChange" title="Cari label prediksi berikutnya yang berbeda" disabled>Ganti label ↗</button>
+        <form id="jump"><input id="target" type="number" min="0" max="199318" step="1" placeholder="No. frame" aria-label="Nomor frame tujuan" required disabled> <button id="go" disabled>Ke frame</button></form>
+        <button id="fullscreen" title="Layar penuh dengan overlay">⛶ Layar penuh</button>
+      </div>
+    </div>
+  </section>
+  <div class="legend" aria-label="Arti warna label">
+    <span><b class="label" data-label="H">H</b> Barcelona</span>
+    <span><b class="label" data-label="A">A</b> Athletic</span>
+    <span><b class="label" data-label="D">D</b> Bola mati</span>
+    <span><b class="label" data-label="X">X</b> Prediksi abstain</span>
+    <span><b class="label" data-label="none">—</b> Referensi tidak tersedia</span>
+  </div>
+  <p class="help"><kbd>Spasi</kbd> putar/jeda · <kbd>←</kbd> <kbd>→</kbd> satu frame · <kbd>Shift</kbd> + panah lima detik. Pilih video tactical asli dari panitia agar nomor frame cocok. Semua file dibaca di perangkat ini.</p>
+</main>
+<script>
+"use strict";
+const FPS = 25;
+const TOTAL = 199319;
+const PUBLIC_MAX = 7500;
+const $ = id => document.getElementById(id);
+const video = $("video");
+const labelNames = {H: "Barcelona", A: "Athletic", D: "Bola mati", X: "Abstain"};
+const state = {
+  frame: null, pending: null, last: TOTAL - 1, ready: false, videoUrl: null,
+  callback: null, settle: null, presented: null, sync: "Menunggu video",
+  pred: null, ref: null, coverage: [], atd: null, warnings: {}
+};
+const rail = [];
+for (let offset = -4; offset <= 4; offset++) {
+  const button = document.createElement("button");
+  button.className = "tag";
+  button.innerHTML = "<span></span><strong></strong>";
+  button.addEventListener("click", () => seekFrame(state.frame + offset));
+  $("rail").append(button);
+  rail.push({offset, button});
+}
+
+function number(value) {
+  return value.toLocaleString("id-ID");
+}
+
+function timestamp(frame) {
+  const ms = Math.round(frame * 1000 / FPS);
+  const minutes = Math.floor(ms / 60000);
+  const seconds = Math.floor(ms / 1000) % 60;
+  return `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}.${String(ms % 1000).padStart(3, "0")}`;
+}
+
+function setLabel(element, label, empty) {
+  element.dataset.label = label || "none";
+  element.querySelector(".letter").textContent = label || "—";
+  element.querySelector(".labelname").textContent = label ? labelNames[label] : empty;
+}
+
+function warn(key, message) {
+  state.warnings[key] = message;
+  const messages = Object.values(state.warnings).filter(Boolean);
+  $("message").textContent = messages.join(" ");
+  $("message").hidden = messages.length === 0;
+}
+
+function render() {
+  const frame = state.frame;
+  const active = frame !== null;
+  const seeking = state.pending !== null;
+  const reference = active ? state.ref?.[frame] : "";
+  setLabel($("prediction"), active && state.pred?.[frame], seeking ? "Mencari frame…" : (state.pred ? "Menunggu video" : "Belum dibuka"));
+  setLabel($("reference"), reference && reference !== "X" ? reference : "", seeking ? "Mencari frame…" : (state.ref ? "Tidak tersedia" : "Belum dibuka"));
+  for (const {offset, button} of rail) {
+    const index = active ? frame + offset : -1;
+    const within = index >= 0 && index <= state.last;
+    const label = within ? state.pred?.[index] : "";
+    button.dataset.label = label || "none";
+    button.children[0].textContent = within ? number(index) : "—";
+    button.children[1].textContent = label || "·";
+    button.disabled = !within || !state.ready;
+    button.setAttribute("aria-current", String(active && offset === 0));
+    button.title = within ? `Ke frame ${index}${label ? " · " + labelNames[label] : ""}` : "";
+  }
+  $("time").textContent = active ? timestamp(frame) : "—";
+  $("frame").textContent = active ? `${number(frame)} / ${number(state.last)}` : "—";
+  $("atdId").textContent = active ? number(frame + 1) : "—";
+  const ball = $("ball");
+  const observation = active ? state.atd?.[frame] : undefined;
+  ball.dataset.track = observation === 1 ? "found" : observation === 0 ? "missing" : "";
+  ball.textContent = observation === 1 ? "Terdeteksi" : observation === 0 ? "Hilang" : (state.atd ? "—" : "Belum dibuka");
+  $("sync").textContent = state.sync;
+  if (active || seeking) $("slider").value = frame ?? state.pending;
+  $("target").placeholder = active ? String(frame) : "No. frame";
+  $("play").textContent = video.paused ? "▶ Putar" : "❚❚ Jeda";
+  for (const id of ["slider","play","prev","next","backFive","forwardFive","speed","target","go"]) $(id).disabled = !state.ready;
+  $("nextChange").disabled = !state.ready || !state.pred || !active;
+  $("publicStart").disabled = !state.ready || !state.coverage.length || state.coverage[0][0] > state.last;
+}
+
+function renderCoverage() {
+  const track = $("coverageTrack");
+  track.replaceChildren();
+  for (const [first, last] of state.coverage) {
+    const bar = document.createElement("span");
+    bar.style.left = `${first / TOTAL * 100}%`;
+    bar.style.width = `${(last - first + 1) / TOTAL * 100}%`;
+    track.append(bar);
+  }
+  $("coverage").textContent = state.coverage.length
+    ? `${number(state.coverage.reduce((sum, [first, last]) => sum + last - first + 1, 0))} frame berlabel. Garis biru menandai rentangnya.`
+    : "Label resmi tersedia hanya di cuplikan publik.";
+}
+
+function loadLabels(text, isPublic) {
+  const rows = text.trim().split(/\r?\n/);
+  if (!/^\s*"?frame"?\s*,\s*"?label"?\s*$/i.test(rows[0])) throw Error("Header harus frame,label.");
+  if (rows.length !== TOTAL + 1) throw Error(`Harus berisi ${number(TOTAL)} baris data.`);
+  const labels = new Array(TOTAL);
+  const ranges = [];
+  let publicCount = 0;
+  let first = null;
+  for (let frame = 0; frame < TOTAL; frame++) {
+    const row = /^\s*"?(\d+)"?\s*,\s*"?([HADX])"?\s*$/i.exec(rows[frame + 1]);
+    if (!row || Number(row[1]) !== frame) throw Error(`Nomor atau label tidak valid di frame ${frame}.`);
+    const label = row[2].toUpperCase();
+    labels[frame] = label;
+    if (!isPublic) continue;
+    if (label !== "X") {
+      publicCount++;
+      if (first === null) first = frame;
+    } else if (first !== null) {
+      ranges.push([first, frame - 1]);
+      first = null;
+    }
+  }
+  if (first !== null) ranges.push([first, TOTAL - 1]);
+  if (isPublic && publicCount !== PUBLIC_MAX) throw Error("Pilih CSV referensi publik panitia dengan tepat 7.500 frame berlabel.");
+  return {labels, ranges};
+}
+
+async function loadAtd(file) {
+  const seen = new Uint8Array(TOTAL);
+  const reader = file.stream().pipeThrough(new TextDecoderStream()).getReader();
+  let carry = "";
+  let count = 0;
+  function record(line) {
+    const colon = line.indexOf(":");
+    const last = line.lastIndexOf(":");
+    if (count >= TOTAL || colon < 1 || colon === last || Number(line.slice(0, colon)) !== count + 1) {
+      throw Error(`ATD tactical harus berurutan mulai ID 1. Periksa baris ${count + 1}.`);
+    }
+    const coordinates = line.slice(last + 1).trim().split(",");
+    if (coordinates.length !== 3 || coordinates.some(value => !value.trim())) throw Error(`Data bola ATD tidak valid di ID ${count + 1}.`);
+    seen[count++] = Number.isFinite(Number(coordinates[0])) && Number.isFinite(Number(coordinates[1])) ? 1 : 0;
+  }
+  try {
+    while (true) {
+      const {value, done} = await reader.read();
+      if (done) break;
+      const lines = (carry + value).split("\n");
+      carry = lines.pop();
+      for (const line of lines) record(line);
+    }
+    if (carry.trim()) record(carry);
+    if (count !== TOTAL) throw Error(`ATD tactical harus berisi ${number(TOTAL)} frame.`);
+    return seen;
+  } finally {
+    await reader.cancel();
+    reader.releaseLock();
+  }
+}
+
+function bindData(key, read, save) {
+  const input = $(key + "File");
+  input.addEventListener("change", async () => {
+    const file = input.files[0];
+    if (!file) return;
+    const name = $(key + "Name");
+    const previous = name.textContent;
+    input.disabled = true;
+    name.textContent = "Membaca…";
+    warn(key, "");
+    try {
+      save(await read(file));
+      name.textContent = file.name;
+      name.title = file.name;
+      render();
+    } catch (error) {
+      name.textContent = previous;
+      warn(key, `${file.name}: ${error.message}`);
+    } finally {
+      input.value = "";
+      input.disabled = false;
+    }
+  });
+}
+
+bindData("pred", async file => loadLabels(await file.text(), false), data => { state.pred = data.labels; });
+bindData("ref", async file => loadLabels(await file.text(), true), data => {
+  state.ref = data.labels;
+  state.coverage = data.ranges;
+  renderCoverage();
+});
+bindData("atd", loadAtd, data => { state.atd = data; });
+
+function showFrame(frame, source) {
+  const index = Math.min(state.last, Math.max(0, frame));
+  const changed = state.frame !== index || state.sync !== source || state.pending !== null;
+  state.frame = index;
+  state.pending = null;
+  state.sync = source;
+  if (changed) render();
+}
+
+function trackVideo(url) {
+  if (!video.requestVideoFrameCallback) return;
+  state.callback = video.requestVideoFrameCallback((_, metadata) => {
+    if (state.videoUrl !== url) return;
+    state.presented = Math.round(metadata.mediaTime * FPS);
+    if (state.ready && !video.seeking &&
+        (state.pending === null || state.presented === state.pending)) {
+      clearTimeout(state.settle);
+      showFrame(state.presented, "Timestamp frame");
+    }
+    trackVideo(url);
+  });
+}
+
+function settleSeek() {
+  clearTimeout(state.settle);
+  if (state.presented !== null && !video.seeking &&
+      (state.pending === state.presented || (state.pending === null && state.frame === null))) {
+    showFrame(state.presented, "Timestamp frame");
+    return;
+  }
+  const url = state.videoUrl;
+  state.settle = setTimeout(() => {
+    if (!state.ready || video.seeking || state.videoUrl !== url) return;
+    if (state.pending !== null || state.frame === null) {
+      showFrame(Math.floor(video.currentTime * FPS + 0.000001), "Estimasi waktu");
+    }
+  }, video.requestVideoFrameCallback ? 230 : 0);
+}
+
+function seekFrame(target) {
+  if (!state.ready || !Number.isFinite(target)) return;
+  const frame = Math.max(0, Math.min(state.last, Math.round(target)));
+  video.pause();
+  if (frame === state.frame && state.pending === null) return;
+  clearTimeout(state.settle);
+  state.pending = frame;
+  state.frame = state.presented = null;
+  state.sync = "Mencari frame…";
+  render();
+  // Seek inside the target frame, away from rounding at the 40 ms boundary.
+  video.currentTime = Math.min(video.duration - 0.001, (frame + 0.5) / FPS);
+  if (!video.seeking) settleSeek();
+}
+
+$("videoFile").addEventListener("change", event => {
+  const file = event.target.files[0];
+  if (!file) return;
+  event.target.value = "";
+  const oldUrl = state.videoUrl;
+  if (state.callback !== null) video.cancelVideoFrameCallback?.(state.callback);
+  clearTimeout(state.settle);
+  state.ready = false;
+  state.frame = state.pending = state.presented = null;
+  state.sync = "Membuka video…";
+  warn("video", "");
+  $("videoName").textContent = file.name;
+  $("videoName").title = file.name;
+  $("placeholder").hidden = false;
+  $("placeholderTitle").textContent = "Membuka video";
+  $("placeholderNote").textContent = "Drive untuk desktop mungkin perlu mengambil bagian file terlebih dahulu.";
+  state.videoUrl = URL.createObjectURL(file);
+  video.src = state.videoUrl;
+  if (oldUrl) URL.revokeObjectURL(oldUrl);
+  video.load();
+  trackVideo(state.videoUrl);
+  render();
+});
+
+video.addEventListener("loadedmetadata", () => {
+  const frames = Math.round(video.duration * FPS);
+  if (!Number.isFinite(frames) || frames < 1) {
+    warn("video", "Durasi video tidak dapat dibaca.");
+    return;
+  }
+  state.last = Math.min(TOTAL, frames) - 1;
+  $("slider").max = $("target").max = state.last;
+  if (Math.abs(frames - TOTAL) > 1) warn("video", `Durasi file setara ${number(frames)} frame @25 fps. Video tactical asli seharusnya ${number(TOTAL)} frame. Cek file sebelum membandingkan label.`);
+});
+
+video.addEventListener("loadeddata", () => {
+  if (!Number.isFinite(video.duration) || video.duration < 1 / FPS) return;
+  state.ready = true;
+  video.playbackRate = Number($("speed").value);
+  $("placeholder").hidden = true;
+  settleSeek();
+  render();
+});
+video.addEventListener("seeked", settleSeek);
+video.addEventListener("timeupdate", () => {
+  if (state.ready && !video.requestVideoFrameCallback && !video.seeking && state.pending === null) {
+    showFrame(Math.floor(video.currentTime * FPS + 0.000001), "Estimasi waktu");
+  }
+});
+for (const event of ["play", "pause", "ended"]) video.addEventListener(event, render);
+video.addEventListener("error", () => {
+  if (!state.videoUrl) return;
+  state.ready = false;
+  state.frame = state.pending = null;
+  state.sync = "Video tidak terbaca";
+  $("placeholder").hidden = false;
+  $("placeholderTitle").textContent = "Video gagal dibuka";
+  $("placeholderNote").textContent = "Coba MP4 tactical asli dari folder lokal di Chrome atau Edge.";
+  warn("video", `Video tidak dapat dibaca (kode ${video.error?.code ?? "?"}). Periksa akses Drive, format video, atau koneksi.`);
+  render();
+});
+
+async function togglePlay() {
+  if (!state.ready) return;
+  if (!video.paused) {
+    video.pause();
+    return;
+  }
+  try { await video.play(); }
+  catch (error) { if (error.name !== "AbortError") warn("play", error.message); }
+}
+const relativeSeek = frames => seekFrame((state.pending ?? state.frame ?? 0) + frames);
+$("play").addEventListener("click", togglePlay);
+video.addEventListener("click", togglePlay);
+$("prev").addEventListener("click", () => relativeSeek(-1));
+$("next").addEventListener("click", () => relativeSeek(1));
+$("backFive").addEventListener("click", () => relativeSeek(-5 * FPS));
+$("forwardFive").addEventListener("click", () => relativeSeek(5 * FPS));
+$("slider").addEventListener("input", event => seekFrame(event.target.valueAsNumber));
+$("speed").addEventListener("change", event => { video.playbackRate = Number(event.target.value); });
+$("publicStart").addEventListener("click", () => seekFrame(state.coverage[0][0]));
+$("nextChange").addEventListener("click", () => {
+  const label = state.pred[state.frame];
+  let frame = state.frame + 1;
+  while (frame <= state.last && state.pred[frame] === label) frame++;
+  if (frame <= state.last) seekFrame(frame);
+});
+$("jump").addEventListener("submit", event => {
+  event.preventDefault();
+  seekFrame($("target").valueAsNumber);
+});
+$("fullscreen").addEventListener("click", async () => {
+  try {
+    if (document.fullscreenElement) await document.exitFullscreen();
+    else await $("desk").requestFullscreen();
+  } catch (error) { warn("fullscreen", error.message); }
+});
+document.addEventListener("keydown", event => {
+  if (!state.ready || event.ctrlKey || event.altKey || event.metaKey || event.target.closest("button,input,select,label")) return;
+  if (event.code === "Space") {
+    event.preventDefault();
+    if (!event.repeat) togglePlay();
+  } else if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
+    event.preventDefault();
+    relativeSeek((event.key === "ArrowLeft" ? -1 : 1) * (event.shiftKey ? 5 * FPS : 1));
+  }
+});
+render();
+</script>
+</body>
+</html>

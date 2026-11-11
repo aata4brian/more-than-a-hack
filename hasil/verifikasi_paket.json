@@ -1,0 +1,161 @@
+{
+  "python": "3.12.10",
+  "clean_environment": true,
+  "pip_check": "ok",
+  "synthetic_tests": 8,
+  "all_15_match_previous": true,
+  "selected_method": 7,
+  "selected_sha256": "f62698f078d5dc917707662d0a9aadc471ae52c384a58de42a1bbcb1febf656e",
+  "runs": [
+    {
+      "method": 1,
+      "preset": "baseline_raw",
+      "title": "Baseline panitia tanpa smoothing",
+      "rows": 199319,
+      "sha256": "9471afeb95722454a96189481561adfb73b3963365a83969f04a986930f12511",
+      "validator": "ok",
+      "created_utc": "2026-11-11T03:15:41.334429+00:00",
+      "matches_previous_run": true
+    },
+    {
+      "method": 2,
+      "preset": "baseline_smooth25",
+      "title": "Baseline panitia smoothing ±25 frame",
+      "rows": 199319,
+      "sha256": "c1fd857c2c0bd5299260b6c55dcd419bde41a4c5af46f9bbcb41b4b3b577353f",
+      "validator": "ok",
+      "created_utc": "2026-11-11T03:15:41.808435+00:00",
+      "matches_previous_run": true
+    },
+    {
+      "method": 3,
+      "preset": "baseline_smooth50",
+      "title": "Baseline panitia smoothing ±50 frame",
+      "rows": 199319,
+      "sha256": "6d4e04b80b9016cc16ada99697bf219d3a74b58750dd6d5ec5a4cd5fc32ab4b9",
+      "validator": "ok",
+      "created_utc": "2026-11-11T03:15:42.238914+00:00",
+      "matches_previous_run": true
+    },
+    {
+      "method": 4,
+      "preset": "baseline_smooth125",
+      "title": "Baseline panitia smoothing ±125 frame",
+      "rows": 199319,
+      "sha256": "41704ddccc1edcddf6a0781e3fdfa06ae07b19fb9ead3bf67f663bfc7b1900ba",
+      "validator": "ok",
+      "created_utc": "2026-11-11T03:15:42.685809+00:00",
+      "matches_previous_run": true
+    },
+    {
+      "method": 5,
+      "preset": "heuristik_v1",
+      "title": "Aturan tracking dan restart",
+      "rows": 199319,
+      "sha256": "9cbf2b457ebeb0182aa283e542b2bdb4081f1a2243860b4f13f2c29e31a96858",
+      "validator": "ok",
+      "created_utc": "2026-11-11T03:16:08.093413+00:00",
+      "matches_previous_run": true
+    },
+    {
+      "method": 6,
+      "preset": "geometry_v2",
+      "title": "Model geometri v2",
+      "rows": 199319,
+      "sha256": "d558bf063e5dec5dd2a4aced6b03287f51f748469f73dd12bbe15e7517e7716d",
+      "validator": "ok",
+      "created_utc": "2026-11-11T03:16:31.779355+00:00",
+      "matches_previous_run": true
+    },
+    {
+      "method": 7,
+      "preset": "flat_play_bias",
+      "title": "Flat + play bias, kandidat yang sudah diverifikasi",
+      "rows": 199319,
+      "sha256": "f62698f078d5dc917707662d0a9aadc471ae52c384a58de42a1bbcb1febf656e",
+      "validator": "ok",
+      "created_utc": "2026-11-11T03:17:03.772279+00:00",
+      "matches_previous_run": true
+    },
+    {
+      "method": 8,
+      "preset": "flat_standard",
+      "title": "Flat + decoder standar",
+      "rows": 199319,
+      "sha256": "6397db79f46a47f96bc7ad23a13be0811a8ba3d97a8b9813b66bd0a237b63151",
+      "validator": "ok",
+      "created_utc": "2026-11-11T03:17:36.412312+00:00",
+      "matches_previous_run": true
+    },
+    {
+      "method": 9,
+      "preset": "flat_fast",
+      "title": "Flat + decoder lebih responsif",
+      "rows": 199319,
+      "sha256": "3e19ac1db41f6fd57210d3b20afeb9fbb06430e8608a7dc20faff7dc87e09356",
+      "validator": "ok",
+      "created_utc": "2026-11-11T03:17:36.983424+00:00",
+      "matches_previous_run": true
+    },
+    {
+      "method": 10,
+      "preset": "flat_stable",
+      "title": "Flat + decoder lebih stabil",
+      "rows": 199319,
+      "sha256": "11abd4b52e5f43738b1e0591caefb726cedc34f2f839b103b52aab06ac4544a6",
+      "validator": "ok",
+      "created_utc": "2026-11-11T03:17:37.495692+00:00",
+      "matches_previous_run": true
+    },
+    {
+      "method": 11,
+      "preset": "two_head_play_bias",
+      "title": "Model status bola dan pemilik dipisah",
+      "rows": 199319,
+      "sha256": "3a1cacaddeb59a173d74884170b67f45e807497e0e91967a8b90047a74d13f5c",
+      "validator": "ok",
+      "created_utc": "2026-11-11T03:17:38.057746+00:00",
+      "matches_previous_run": true
+    },
+    {
+      "method": 12,
+      "preset": "blend_play_bias",
+      "title": "Gabungan flat dan model dua kepala",
+      "rows": 199319,
+      "sha256": "9204abd651a1c7ed80c5e870c76fc0f49c432ec36fb59857c9b4e4b09e1bd4be",
+      "validator": "ok",
+      "created_utc": "2026-11-11T03:17:38.569621+00:00",
+      "matches_previous_run": true
+    },
+    {
+      "method": 13,
+      "preset": "blend_v2_play_bias",
+      "title": "Gabungan v2, flat, dan model dua kepala",
+      "rows": 199319,
+      "sha256": "f94946290c32ed2259deb6c21882271e301728f32d7c2a04fd7173193565efcb",
+      "validator": "ok",
+      "created_utc": "2026-11-11T03:17:39.076751+00:00",
+      "matches_previous_run": true
+    },
+    {
+      "method": 14,
+      "preset": "context",
+      "title": "Biaya pergantian mengikuti konteks sebelum dan sesudah",
+      "rows": 199319,
+      "sha256": "3e28bca7e63e44b5e5d599bca514659fc2da4d301d93efcb8eba6ca7a7549faf",
+      "validator": "ok",
+      "created_utc": "2026-11-11T03:17:39.666340+00:00",
+      "matches_previous_run": true
+    },
+    {
+      "method": 15,
+      "preset": "context_gap",
+      "title": "Biaya pergantian berbasis konteks saat tracking hilang",
+      "rows": 199319,
+      "sha256": "1e86bf7a2976665919450366969ee35a1a004468891ec5348c76b6cca883be38",
+      "validator": "ok",
+      "created_utc": "2026-11-11T03:17:40.244125+00:00",
+      "matches_previous_run": true
+    }
+  ]
+}

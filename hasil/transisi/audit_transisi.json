@@ -1,0 +1,66 @@
+{
+  "baseline_score_differences": 25,
+  "baseline_max_diff": 0.0,
+  "columns": [
+    "reference",
+    "within_1s",
+    "1_to_3s",
+    "unmatched"
+  ],
+  "audit": {
+    "original/visible_team": [
+      1771,
+      527,
+      265,
+      979
+    ],
+    "original/gap_under15_team": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "original/gap15plus_team": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "long_gaps/visible_team": [
+      1035,
+      308,
+      159,
+      568
+    ],
+    "long_gaps/gap_under15_team": [
+      238,
+      35,
+      43,
+      160
+    ],
+    "long_gaps/gap15plus_team": [
+      498,
+      81,
+      83,
+      334
+    ],
+    "gap30/visible_team": [
+      857,
+      282,
+      122,
+      453
+    ],
+    "gap30/gap_under15_team": [
+      63,
+      10,
+      16,
+      37
+    ],
+    "gap30/gap15plus_team": [
+      851,
+      127,
+      123,
+      601
+    ]
+  }
+}

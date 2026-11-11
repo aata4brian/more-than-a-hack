@@ -1,0 +1,13 @@
+match,input,method,spellF1,macroF1,deadF1,pred_spells,ref_spells,visible
+J03WMX,original,baseline_smooth50,0.3072,0.4150,0.0000,360,511,1.0000
+J03WMX,original,v1_tracking_only,0.4722,0.7868,0.7870,375,511,1.0000
+J03WMX,short_gaps,baseline_smooth50,0.2604,0.4073,0.0000,472,511,0.5905
+J03WMX,short_gaps,v1_tracking_only,0.3712,0.6778,0.5986,282,511,0.5905
+J03WMX,long_gaps,baseline_smooth50,0.2172,0.4768,0.3401,443,511,0.6110
+J03WMX,long_gaps,v1_tracking_only,0.3022,0.5801,0.4937,250,511,0.6110
+J03WN1,original,baseline_smooth50,0.2838,0.3488,0.0000,436,500,1.0000
+J03WN1,original,v1_tracking_only,0.4643,0.6766,0.6893,396,500,1.0000
+J03WN1,short_gaps,baseline_smooth50,0.2659,0.3407,0.0000,508,500,0.5903
+J03WN1,short_gaps,v1_tracking_only,0.3405,0.5178,0.4022,314,500,0.5903
+J03WN1,long_gaps,baseline_smooth50,0.1968,0.4376,0.3782,504,500,0.6170
+J03WN1,long_gaps,v1_tracking_only,0.3064,0.5550,0.5462,265,500,0.6170

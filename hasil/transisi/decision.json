@@ -1,0 +1,110 @@
+{
+  "protocol": "transition-20261110-v1",
+  "name": "switch",
+  "development_best": "switch",
+  "baseline_spellF1": 0.5039026363057093,
+  "baseline_macroF1": 0.8822267759060725,
+  "ranked": [
+    {
+      "name": "switch",
+      "spellF1": 0.5148134855514013,
+      "macroF1": 0.8843165668666596,
+      "wins": 5,
+      "gain": 0.010910849245691967,
+      "macro_gain": 0.0020897909605871456,
+      "pass": true
+    },
+    {
+      "name": "gap_switch",
+      "spellF1": 0.513888114697899,
+      "macroF1": 0.8852970551083252,
+      "wins": 5,
+      "gain": 0.009985478392189662,
+      "macro_gain": 0.003070279202252779,
+      "pass": true
+    },
+    {
+      "name": "switch_gap",
+      "spellF1": 0.5113201361636676,
+      "macroF1": 0.8838750635401678,
+      "wins": 5,
+      "gain": 0.007417499857958254,
+      "macro_gain": 0.0016482876340953023,
+      "pass": true
+    },
+    {
+      "name": "gap_context",
+      "spellF1": 0.5066611840230405,
+      "macroF1": 0.8837309444324816,
+      "wins": 4,
+      "gain": 0.0027585477173311945,
+      "macro_gain": 0.001504168526409111,
+      "pass": false
+    },
+    {
+      "name": "gap_fit",
+      "spellF1": 0.5064366131339316,
+      "macroF1": 0.8837487005544185,
+      "wins": 4,
+      "gain": 0.0025339768282223174,
+      "macro_gain": 0.0015219246483459958,
+      "pass": false
+    },
+    {
+      "name": "gap_blend",
+      "spellF1": 0.5049493034238972,
+      "macroF1": 0.8833078872366527,
+      "wins": 3,
+      "gain": 0.001046667118187905,
+      "macro_gain": 0.0010811113305801978,
+      "pass": false
+    },
+    {
+      "name": "context_gap",
+      "spellF1": 0.5046412731659554,
+      "macroF1": 0.8825352321914057,
+      "wins": 4,
+      "gain": 0.0007386368602461113,
+      "macro_gain": 0.0003084562853332695,
+      "pass": false
+    },
+    {
+      "name": "context",
+      "spellF1": 0.5043272116615184,
+      "macroF1": 0.882416519989587,
+      "wins": 4,
+      "gain": 0.000424575355809087,
+      "macro_gain": 0.00018974408351457583,
+      "pass": false
+    }
+  ],
+  "idsse": {
+    "spell_gain": 0.009556640213471912,
+    "macro_gain": 0.0013901420543983578,
+    "match_gain": {
+      "J03WQQ": 0.011185352778735669,
+      "J03WR9": 0.007927927648208044
+    },
+    "pass": true
+  },
+  "recommendation": "pertahankan flat/play_bias",
+  "cross_provider": {
+    "pass": false,
+    "diagnostics": {
+      "1874553": {
+        "error": "Phase alignment failed for period 1: 0.877"
+      },
+      "1927964": {
+        "error": "Phase alignment failed for period 1: 0.902"
+      },
+      "1996435": {
+        "error": "Phase alignment failed for period 1: 0.847"
+      },
+      "2017461": {
+        "error": "Phase alignment failed for period 1: 0.791"
+      }
+    },
+    "note": "SkillCorner menghasilkan 0/4 laga yang lolos pemeriksaan, di bawah minimum tiga laga."
+  },
+  "external_note": "SkillCorner menghasilkan 0/4 laga yang lolos pemeriksaan, di bawah minimum tiga laga."
+}

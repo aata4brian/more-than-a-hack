@@ -1,0 +1,32 @@
+{
+  "name": "flat/play_bias",
+  "method": "flat",
+  "decoder": {
+    "team": 2,
+    "dead": 4,
+    "bias": -0.18,
+    "adapt": 0.0,
+    "merge": 0
+  },
+  "development": [
+    "J03WMX",
+    "J03WN1",
+    "J03WOH",
+    "J03WOY",
+    "J03WPY"
+  ],
+  "holdout": [
+    "J03WQQ",
+    "J03WR9"
+  ],
+  "dev_gain": 0.0067975564496656204,
+  "accepted": true,
+  "primary_gain": 0.0223742323297913,
+  "macro_gain": 0.012533353393092694,
+  "gain_per_match": {
+    "J03WQQ": 0.026723850807047866,
+    "J03WR9": 0.01802461385253451
+  },
+  "stress_gain": 0.021966562547222956,
+  "stress_seeds": 24
+}

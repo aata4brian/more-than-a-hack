@@ -1,0 +1,40 @@
+{
+  "id": "transition-20261110-v1",
+  "deadline": "2026-11-11T06:00:00+07:00",
+  "dev": [
+    "J03WMX",
+    "J03WN1",
+    "J03WOH",
+    "J03WOY",
+    "J03WPY"
+  ],
+  "retest": [
+    "J03WQQ",
+    "J03WR9"
+  ],
+  "folds": [
+    [
+      "J03WMX",
+      "J03WOY"
+    ],
+    [
+      "J03WN1",
+      "J03WOH",
+      "J03WPY"
+    ]
+  ],
+  "weights": {
+    "original": 0.1,
+    "short_gaps": 0.15,
+    "long_gaps": 0.3,
+    "camera_gaps": 0.3,
+    "drift": 0.15,
+    "gap15": 0.2,
+    "gap30": 0.25
+  },
+  "selection": {
+    "spell_gain": 0.005,
+    "macro_tolerance": 0.005,
+    "dev_match_wins": 3
+  }
+}
