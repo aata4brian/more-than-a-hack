@@ -80,3 +80,6 @@ outputs/
 BAR-ATH_*_atd.*
 BAR-ATH_*_homography.csv
 BAR-ATH_*_smart_tagging.xml
+
+# Per-device dataset and viewer selection
+.mtah-local.json
