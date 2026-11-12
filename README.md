@@ -28,11 +28,11 @@ python eksperimen/run.py --method 7 --data-dir /path/to/data
 
 | Anggota | Nomor |
 |---|---|
-| A | 1, 6, 11 |
-| B | 2, 7, 12 |
-| C | 3, 8, 13 |
-| D | 4, 9, 14 |
-| E | 5, 10, 15 |
+| Affan | 1, 6, 11 |
+| Mosi | 2, 7, 12 |
+| Khansa | 3, 8, 13 |
+| Faiq | 4, 9, 14 |
+| Brian | 5, 10, 15 |
 
 Keempat baseline panitia, dua versi tim terdahulu, kandidat utama, dan delapan variasi model atau decoder tersedia dari menu yang sama. Rincian tiap nomor ada di [panduan eksperimen](eksperimen/README.md). Hasil eksternal yang sudah selesai ada di [hasil](hasil/README.md).
 
