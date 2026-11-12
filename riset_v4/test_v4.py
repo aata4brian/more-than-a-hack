@@ -86,6 +86,7 @@ class Tests(unittest.TestCase):
         cal=calibrate([p],[q],[y]);cp,cq=cal.state(p),cal.edge(q)
         self.assertEqual(cq.shape,(2000,6));self.assertTrue(np.isfinite(cp).all())
         np.testing.assert_allclose(cp.sum(1),1.,atol=1e-6)
+        self.assertEqual(decode(cp,cq).shape,y.shape)
         np.testing.assert_allclose(cal.edge(q[:,EDGE_SWAP]),cq[:,EDGE_SWAP],atol=1e-6)
 
     def test_tcn_chunk_equivalence_and_training(self):

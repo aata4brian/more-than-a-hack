@@ -6,7 +6,7 @@ Paket penelitian terpisah dari menu eksperimen tim 1–15. Jalankan perintah dar
 
 | Prioritas | Implementasi | Pemeriksaan |
 |---|---|---|
-| 1 | Model tujuh kelas: bukan batas + enam arah pergantian H/A/D. Kalibrasi suhu status dan sigmoid batas memakai pertandingan terpisah. | NLL status, Brier batas, prevalensi kejadian, probabilitas rata-rata. |
+| 1 | Model tujuh kelas: bukan batas + enam arah pergantian H/A/D, dengan selisih konteks ±1 detik dari pendekatan switch. Kalibrasi suhu status dan sigmoid batas memakai pertandingan terpisah. | NLL status, Brier batas, prevalensi kejadian, probabilitas rata-rata. |
 | 2 | Semua 110 fitur v3 dipertahankan; ditambah 93 fitur rapat, termasuk kecepatan relatif, gerak mendekat/menjauh, kesamaan gerak, dan kontinuitas kontak tim. | Simetri H/A, NaN, kecepatan tidak dihitung menyeberangi observasi hilang/lompatan slot. |
 | 3 | Bobot episode pendek dibatasi, ditambah bobot dekat batas; sampel sekitar batas lebih rapat. | Recall episode <2 detik, 2–5 detik, dan ≥5 detik pada IoU 0,5. |
 | 4 | Kandidat batas dicari di seluruh urutan; Viterbi langsung pada 25 fps. | Episode baru bisa terbentuk, bukan hanya menggeser batas lama. |

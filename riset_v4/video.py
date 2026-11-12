@@ -80,7 +80,10 @@ def gaps(ball,first,last):
         yield int(a),int(b)
 
 
-def read_frames(cap,first,last):
+class RejectedGap(Exception):pass
+
+
+def read_frames(cap,first,last,anchor=None):
     if not cap.set(cv2.CAP_PROP_POS_FRAMES,first):raise RuntimeError('Video seek failed')
     frames=[]
     for index in range(first,last):
@@ -88,8 +91,31 @@ def read_frames(cap,first,last):
         if not ok:raise RuntimeError(f'Video decode failed at {index}')
         actual=cap.get(cv2.CAP_PROP_POS_FRAMES)
         if actual and abs(actual-(index+1))>.5:raise RuntimeError('Video frame alignment failed')
-        frames.append(cv2.cvtColor(frame,cv2.COLOR_BGR2GRAY))
+        gray=cv2.cvtColor(frame,cv2.COLOR_BGR2GRAY)
+        frames.append(gray)
+        # Fail early on bad pixels instead of buffering ten seconds of unusable
+        # video on a laptop. The complete anchored test still runs afterwards.
+        if anchor is not None:
+            if len(frames)==1:
+                template=patch(gray,anchor)
+                if template is None or template.std()<4:raise RejectedGap('forward_weak_anchor')
+                point=anchor
+            else:
+                tracked,_,reason=follow(frames[-2:],point)
+                if tracked is None:raise RejectedGap('forward_'+reason)
+                point=tracked[-1]
+            if len(frames)*gray.nbytes>384*1024*1024:raise RejectedGap('video_memory_budget')
     return frames
+
+
+def recover_window(cap,a,b,matrices,valid,error,ball,pitch):
+    if not np.all(valid[a-1:b+1]) or np.max(error[a-1:b+1])>3:
+        return None,None,'homography'
+    try:
+        anchor=project(matrices[a-1],ball[a-1]/pitch)
+        frames=read_frames(cap,a-1,b+1,anchor)
+    except RejectedGap as rejection:return None,None,str(rejection)
+    return recover_gap(frames,matrices[a-1:b+1],valid[a-1:b+1],error[a-1:b+1],ball[a-1],ball[b],pitch)
 
 
 def run(args):
@@ -138,8 +164,7 @@ def run(args):
                 b=a+5
                 if len(selftest)>=args.selftest:break
                 if not np.isfinite(original[a-1:b+1]).all():continue
-                frames=read_frames(cap,a-1,b+1)
-                xy,c,why=recover_gap(frames,matrices[a-1:b+1],valid[a-1:b+1],error[a-1:b+1],original[a-1],original[b],pitch)
+                xy,c,why=recover_window(cap,a,b,matrices,valid,error,original,pitch)
                 row=dict(start=a,end=b,status=why,mean_error_m='',max_error_m='')
                 if xy is not None:
                     distance=np.linalg.norm(xy[1:-1]-original[a:b],axis=1)
@@ -150,8 +175,7 @@ def run(args):
             if row['status']!='pending':continue
             if processed>=args.top:row['status']='not_attempted_budget';continue
             processed+=1;a,b=row['start'],row['end']
-            frames=read_frames(cap,a-1,b+1)
-            xy,c,why=recover_gap(frames,matrices[a-1:b+1],valid[a-1:b+1],error[a-1:b+1],ball[a-1],ball[b],pitch)
+            xy,c,why=recover_window(cap,a,b,matrices,valid,error,ball,pitch)
             row['status']=why
             if xy is not None:
                 ball[a:b]=xy[1:-1];confidence[a:b]=c[1:-1];accepted[a:b]=True

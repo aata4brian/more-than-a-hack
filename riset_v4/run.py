@@ -114,20 +114,25 @@ def benchmark(args):
         if model_path.exists():
             log(root,'loading_checkpoint',fold=fold);models=joblib.load(model_path)
         else:
-            cases,old=build_training(paths,train,args.train_scenarios,args.seed,root)
-            log(root,'fitting_legacy_baseline',fold=fold)
-            baseline=fit_head(*old,max_iter=args.iterations);del old;gc.collect()
-            log(root,'fitting_relative_unweighted',fold=fold)
-            plain=Heads(weighted=False).fit(cases,args.iterations)
-            log(root,'fitting_relative_weighted',fold=fold)
-            weighted=Heads(weighted=True).fit(cases,args.iterations)
-            temporal=None
-            if args.epochs:
-                from .tcn import Temporal
-                log(root,'training_tcn',fold=fold)
-                temporal=Temporal().fit(cases,epochs=args.epochs,steps=args.steps,device=args.device,
-                    seed=args.seed,progress=lambda v:log(root,'training_tcn',fold=fold,**v))
-            del cases;gc.collect()
+            checkpoint=folder/'trained_before_calibration.joblib'
+            if checkpoint.exists():
+                baseline,plain,weighted,temporal=joblib.load(checkpoint)
+            else:
+                cases,old=build_training(paths,train,args.train_scenarios,args.seed,root)
+                log(root,'fitting_legacy_baseline',fold=fold)
+                baseline=fit_head(*old,max_iter=args.iterations);del old;gc.collect()
+                log(root,'fitting_relative_unweighted',fold=fold)
+                plain=Heads(weighted=False).fit(cases,args.iterations)
+                log(root,'fitting_relative_weighted',fold=fold)
+                weighted=Heads(weighted=True).fit(cases,args.iterations)
+                temporal=None
+                if args.epochs:
+                    from .tcn import Temporal
+                    log(root,'training_tcn',fold=fold)
+                    temporal=Temporal().fit(cases,epochs=args.epochs,steps=args.steps,device=args.device,
+                        seed=args.seed,progress=lambda v:log(root,'training_tcn',fold=fold,**v))
+                save_model(checkpoint,(baseline,plain,weighted,temporal))
+                del cases;gc.collect()
             log(root,'calibrating',fold=fold,match=cal)
             calibration=calibration_cases(paths[cal],args.train_scenarios,args.seed+17)
             weighted=fit_calibration(weighted,calibration,folder,'trees')

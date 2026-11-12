@@ -8,4 +8,4 @@ for p in (ROOT, PIPELINE):
     if str(p) not in sys.path:
         sys.path.insert(0, str(p))
 
-VERSION = 'v4.1'
+VERSION = 'v4.2'

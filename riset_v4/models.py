@@ -25,6 +25,13 @@ def head(x,y,w,iterations=90):
     return model
 
 
+def switch_context(x):
+    # The original switch head used +/-5 steps on a five-frame grid.
+    # Keep that +/-1 second context at the new full-frame resolution.
+    t=np.arange(len(x));before=x[np.maximum(t-25,0)];after=x[np.minimum(t+25,len(x)-1)]
+    return np.column_stack([x,after-before]).astype(np.float32)
+
+
 @dataclass
 class Calibration:
     temperature: float = 1.
@@ -70,7 +77,7 @@ class Heads:
         self.calibration=Calibration()
 
     def fit(self,cases,iterations=90):
-        xs,ys,ws,es,ew=[],[],[],[],[]
+        xs,ys,ws,es,ew,ex=[],[],[],[],[],[]
         for pair,y,scenario_weight in cases:
             idx=train_indices(y,step=10)
             weights=sample_weights(y) if self.weighted else (y<3).astype(float)
@@ -81,6 +88,7 @@ class Heads:
             # are intentional; independent dense calibration restores event priors.
             for view in range(2):
                 xs.append(pair[view][idx]); ys.append((y if view==0 else CLASS_SWAP[y])[idx])
+                ex.append(switch_context(pair[view])[idx])
                 ws.append(weights[idx]*scenario_weight)
                 e=labels.copy()
                 if view:
@@ -88,14 +96,14 @@ class Heads:
                 es.append(e[idx]); ew.append(edge_weight[idx]*scenario_weight)
         x=np.concatenate(xs)
         self.state_model=head(x,np.concatenate(ys),np.concatenate(ws),iterations)
-        self.edge_model=head(x,np.concatenate(es),np.concatenate(ew),iterations)
+        self.edge_model=head(np.concatenate(ex),np.concatenate(es),np.concatenate(ew),iterations)
         self.n_features=x.shape[1]
         return self
 
     def raw(self,pair):
         a,b=pair
         p=(aligned(self.state_model,a,3)+aligned(self.state_model,b,3)[:,[1,0,2]])/2
-        q=(aligned(self.edge_model,a,7)[:,1:]+aligned(self.edge_model,b,7)[:,1:][:,EDGE_SWAP])/2
+        q=(aligned(self.edge_model,switch_context(a),7)[:,1:]+aligned(self.edge_model,switch_context(b),7)[:,1:][:,EDGE_SWAP])/2
         return p,q
 
     def predict(self,pair,calibrated=True):

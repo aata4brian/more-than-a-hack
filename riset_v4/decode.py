@@ -27,7 +27,7 @@ def proposals(q,threshold=.1):
 
 def decode(p,q=None,settings=Settings()):
     if len(p)==0:return np.empty(0,np.int8)
-    logs=np.log(np.clip(p,1e-6,1))*settings.emission_scale
+    logs=np.log(np.clip(p,1e-6,1)).astype(np.float64)*settings.emission_scale
     logs[:,2]+=settings.dead_bias*settings.emission_scale
     base=np.array([[0,settings.team,settings.dead],
                    [settings.team,0,settings.dead],[settings.dead,settings.dead,0]],float)
