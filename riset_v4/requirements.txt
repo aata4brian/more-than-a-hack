@@ -1,0 +1,9 @@
+numpy==1.26.4
+scipy==1.15.3
+scikit-learn==1.6.1
+joblib==1.4.2
+pandas==2.2.3
+threadpoolctl==3.6.0
+opencv-python-headless==4.10.0.84
+numba==0.63.1
+torch==2.5.1

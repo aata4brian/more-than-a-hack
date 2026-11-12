@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+*.nbc
+*.nbi
+outputs/
+feature_cache/
+*.joblib
+*.npz
+*.npy
+*.mp4
+*.log
